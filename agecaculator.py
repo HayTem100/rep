@@ -18,17 +18,12 @@ while True:
         print(f"You have lived for {days:,} days.")
     else:
         print("Wrong choice!")
-        
-    x = input("Do you want to performe another age calculation [Y/N]: ").strip().lower()
-    if x == "y":
+
+    repeat = input("Do you want to performe another age calculation [Y/N]: ").strip().lower()
+    if repeat  == "y":
         continue
-    elif x == "n":
+    elif repeat == "n":
         print("end")
         break
     else:
         print("Invalid choice")
-    
-    
-
-
-    
