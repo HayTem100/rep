@@ -3,7 +3,7 @@ print("##########################[EIGRP CONF]################################")
 print("######################################################################")
 from netmiko import ConnectHandler
 
-router_num = input("How many routers would you like to configure: ").strip().lower()
+router_num = input("How many routers would you like to configure: ")
 router_num = int(router_num)
 
 while router_num > 0:
@@ -16,7 +16,7 @@ while router_num > 0:
         "username": USER,
         "password": PASS
     }
-    print("##################starting configuration################################")
+    print("######################starting configuration#########################")
     myssh = ConnectHandler(**Router)
     hostname = myssh.send_command("show run | i host")
     x = hostname.split()
@@ -28,13 +28,13 @@ while router_num > 0:
     network_num = int(network_num)
     while network_num > 0:
         network_i = input("Please specify the network to enable: ")
-        network_e = (f"network   {network_i}")
+        network_e = (f"network {network_i}")
         config_commands = [routereigrp,
                            network_e]
         output = myssh.send_config_set(config_commands)
         print(output)
         network_num -=1
-    print(f"Router  {device}  configured")
+    print(f"Router {device} configured")
     print("=" *79)
     router_num -=1
 
